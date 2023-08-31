@@ -1,0 +1,53 @@
+@use '../../helpers/mixins' as *;
+@use '../../helpers/variables' as *;
+
+// --------------------------------
+
+// Text grid styles
+
+// --------------------------------
+
+.text_grid {
+  @include display-grid();
+  color: var(--color-contrast-low);
+  padding: var(--space-xl) 0;
+  row-gap: var(--space-xl);
+
+  @include breakpoint(sm) {
+    padding: var(--space-2xl) 0;
+  }
+
+  &__title {
+    grid-column: 2 / span 22;
+    grid-row: 1 / 2;
+    text-align: center;
+
+    @include breakpoint(md) {
+      grid-column: 7 / span 12;
+    }
+  }
+
+  .text_sections_wrapper {
+    @include display-flex();
+    flex-direction: column;
+    gap: var(--space-xl);
+    grid-column: 2 / span 22;
+
+    @include breakpoint(sm) {
+      grid-column: 3 / span 14;
+    }
+
+    @include breakpoint(md) {
+      flex-direction: row;
+      grid-column: 4 / span 18;
+    }
+  }
+
+  .text_section {
+    @include display-flex();
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: var(--space-xs);
+    width: 100%;
+  }
+}

@@ -1,0 +1,168 @@
+// --------------------------------
+
+// Layout
+
+// --------------------------------
+
+// Breakpoint mixin
+
+$breakpoints: (
+  // ~512px
+  xs: 32rem,
+  // ~768px
+  sm: 48rem,
+  // ~1024px
+  md: 64rem,
+  // ~1280px
+  lg: 80rem,
+  // ~1440px
+  xl: 90rem,
+  // ~2200px
+  xxl: 137.5rem
+) !default;
+
+@mixin breakpoint($breakpoint, $logic: false) {
+  @if ($logic) {
+    @media #{$logic} and (min-width: map-get($map: $breakpoints, $key: $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: map-get($map: $breakpoints, $key: $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+// Layout mixins
+
+@mixin container {
+  margin: 0 auto;
+  max-width: 100rem;
+  padding: 0 clamp(var(--space-3xs), 8vw + 0.5rem, var(--space-3xl));
+}
+
+@mixin display-grid {
+  display: grid;
+  column-gap: 1rem;
+  grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: auto;
+  position: relative;
+  row-gap: 1rem;
+}
+
+@mixin display-flex {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+// --------------------------------
+
+// Typography
+
+// --------------------------------
+
+@mixin headings {
+  font-family: var(--font-heading);
+  // line-height: --heading-line-height;
+}
+
+// edit font rendering -> tip: use for light text on dark backgrounds
+
+@mixin fontSmooth {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+// --------------------------------
+
+// Colors
+
+// --------------------------------
+
+// define HSL color variable
+@mixin defineColorHSL($color, $hue, $saturation, $lightness) {
+  #{$color}: unquote('hsl(#{$hue}, #{$saturation}, #{$lightness})');
+  #{$color}-h: #{$hue};
+  #{$color}-s: #{$saturation};
+  #{$color}-l: #{$lightness};
+}
+
+// return color with different opacity value
+@function alpha($color, $opacity) {
+  $color: str-replace($color, 'var(');
+  $color: str-replace($color, ')');
+  $color-h: var(#{$color + '-h'});
+  $color-s: var(#{$color + '-s'});
+  $color-l: var(#{$color + '-l'});
+  @return hsla($color-h, $color-s, $color-l, $opacity);
+}
+
+// return color with different lightness value
+@function lightness($color, $lightnessMultiplier) {
+  $color: str-replace($color, 'var(');
+  $color: str-replace($color, ')');
+  $color-h: var(#{$color + '-h'});
+  $color-s: var(#{$color + '-s'});
+  $color-l: var(#{$color + '-l'});
+  @return hsl($color-h, $color-s, calc(#{$color-l} * #{$lightnessMultiplier}));
+}
+
+// modify color HSLA values
+@function adjustHSLA(
+  $color,
+  $hueMultiplier: 1,
+  $saturationMultiplier: 1,
+  $lightnessMultiplier: 1,
+  $opacity: 1
+) {
+  $color: str-replace($color, 'var(');
+  $color: str-replace($color, ')');
+  $color-h: var(#{$color + '-h'});
+  $color-s: var(#{$color + '-s'});
+  $color-l: var(#{$color + '-l'});
+  @return hsla(
+    calc(#{$color-h} * #{$hueMultiplier}),
+    calc(#{$color-s} * #{$saturationMultiplier}),
+    calc(#{$color-l} * #{$lightnessMultiplier}),
+    $opacity
+  );
+}
+
+// replace substring with another string
+// credits: https://css-tricks.com/snippets/sass/str-replace-function/
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+  @return $string;
+}
+
+// --------------------------------
+
+// Accessibility
+
+// --------------------------------
+
+// hide - content made available only to screen readers
+
+@mixin srHide {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+}
+
+// show
+@mixin srShow {
+  position: static;
+  clip: auto;
+  clip-path: none;
+}

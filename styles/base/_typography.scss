@@ -1,0 +1,240 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+
+// --------------------------------
+
+// Fluid Responsive Typography - setting the base font size per breakpoint with a minimum and maximum size. Everything will scale according to this.
+
+// --------------------------------
+
+:root {
+  --font-from-0: 14;
+  --font-to-0: 16;
+  --vw-from-0: calc(1 / 100);
+  --vw-to-0: calc(512 / 100);
+  --coefficient-0: calc(
+    (var(--font-to-0) - var(--font-from-0)) /
+      (var(--vw-to-0) - var(--vw-from-0))
+  );
+  --base-0: calc(
+    (var(--font-from-0) - var(--vw-from-0) * var(--coefficient-0)) / 16
+  );
+
+  --font-from-1: 14;
+  --font-to-1: 16;
+  --vw-from-1: calc(512 / 100);
+  --vw-to-1: calc(768 / 100);
+  --coefficient-1: calc(
+    (var(--font-to-1) - var(--font-from-1)) /
+      (var(--vw-to-1) - var(--vw-from-1))
+  );
+  --base-1: calc(
+    (var(--font-from-1) - var(--vw-from-1) * var(--coefficient-1)) / 16
+  );
+
+  --font-from-2: 14;
+  --font-to-2: 16;
+  --vw-from-2: calc(768 / 100);
+  --vw-to-2: calc(1024 / 100);
+  --coefficient-2: calc(
+    (var(--font-to-2) - var(--font-from-2)) /
+      (var(--vw-to-2) - var(--vw-from-2))
+  );
+  --base-2: calc(
+    (var(--font-from-2) - var(--vw-from-2) * var(--coefficient-2)) / 16
+  );
+
+  --font-from-3: 14;
+  --font-to-3: 16;
+  --vw-from-3: calc(1024 / 100);
+  --vw-to-3: calc(1280 / 100);
+  --coefficient-3: calc(
+    (var(--font-to-3) - var(--font-from-3)) /
+      (var(--vw-to-3) - var(--vw-from-3))
+  );
+  --base-3: calc(
+    (var(--font-from-3) - var(--vw-from-3) * var(--coefficient-3)) / 16
+  );
+
+  --font-size-4: 1;
+
+  --font-from-5: 18;
+  --font-to-5: 22;
+  --vw-from-5: calc(1440 / 100);
+  --vw-to-5: calc(1920 / 100);
+  --coefficient-5: calc(
+    (var(--font-to-5) - var(--font-from-5)) /
+      (var(--vw-to-5) - var(--vw-from-5))
+  );
+  --base-5: calc(
+    (var(--font-from-5) - var(--vw-from-5) * var(--coefficient-5)) / 16
+  );
+
+  --font-from-6: 22;
+  --font-to-6: 24;
+  --vw-from-6: calc(1920 / 100);
+  --vw-to-6: calc(2400 / 100);
+  --coefficient-6: calc(
+    (var(--font-to-6) - var(--font-from-6)) /
+      (var(--vw-to-6) - var(--vw-from-6))
+  );
+  --base-6: calc(
+    (var(--font-from-6) - var(--vw-from-6) * var(--coefficient-6)) / 16
+  );
+}
+
+html {
+  font-size: calc(var(--base-6) * 1rem + var(--coefficient-6) * 1vw);
+}
+@media screen and (max-width: 1920px) {
+  html {
+    font-size: calc(var(--base-5) * 1rem + var(--coefficient-5) * 1vw);
+  }
+}
+@media screen and (max-width: 1440px) {
+  html {
+    font-size: calc(var(--font-size-4) * 1rem);
+  }
+}
+@media screen and (max-width: 1280px) {
+  html {
+    font-size: calc(var(--base-3) * 1rem + var(--coefficient-3) * 1vw);
+  }
+}
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: calc(var(--base-2) * 1rem + var(--coefficient-2) * 1vw);
+  }
+}
+@media screen and (max-width: 768px) {
+  html {
+    font-size: calc(var(--base-1) * 1rem + var(--coefficient-1) * 1vw);
+  }
+}
+@media screen and (max-width: 512px) {
+  html {
+    font-size: calc(var(--base-0) * 1rem + var(--coefficient-0) * 1vw);
+  }
+}
+
+// --------------------------------
+
+// Typographic scale
+
+// --------------------------------
+
+/* @link https://utopia.fyi/type/calculator?c=320,16,1.2,2560,22,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  --step--2: clamp(0.69rem, calc(0.67rem + 0.13vw), 0.88rem);
+  --step--1: clamp(0.83rem, calc(0.8rem + 0.19vw), 1.1rem);
+  --step-0: clamp(1rem, calc(0.95rem + 0.27vw), 1.38rem);
+  --step-1: clamp(1.2rem, calc(1.13rem + 0.37vw), 1.72rem);
+  --step-2: clamp(1.44rem, calc(1.34rem + 0.51vw), 2.15rem);
+  --step-3: clamp(1.73rem, calc(1.59rem + 0.68vw), 2.69rem);
+  --step-4: clamp(2.07rem, calc(1.89rem + 0.92vw), 3.36rem);
+  --step-5: clamp(2.49rem, calc(2.24rem + 1.22vw), 4.2rem);
+  --step-6: clamp(2.99rem, calc(2.66rem + 1.61vw), 5.25rem);
+}
+
+.step--2 {
+  font-size: var(--step--2);
+}
+
+.step--1 {
+  font-size: var(--step--1);
+}
+
+.step-0 {
+  font-size: var(--step-0);
+}
+
+.step-1 {
+  font-size: var(--step-1);
+}
+
+.step-2 {
+  font-size: var(--step-2);
+}
+
+.step-3 {
+  font-size: var(--step-3);
+}
+
+.step-4 {
+  font-size: var(--step-4);
+}
+
+.step-5 {
+  font-size: var(--step-5);
+}
+
+.step-6 {
+  font-size: var(--step-6);
+}
+
+.step-7 {
+  font-size: var(--step-7);
+}
+
+.step-8 {
+  font-size: var(--step-8);
+}
+
+// --------------------------------
+
+// Typographic styles
+
+// --------------------------------
+
+:root {
+  --body-line-height: 1.6;
+  --heading-line-height: 1.3;
+}
+
+.heading-display {
+  max-width: 20ch;
+  font-size: var(--step-7);
+  line-height: var(--heading-line-height);
+  letter-spacing: var(--heading-letter-spacing);
+}
+
+.heading-headline {
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: var(--step-4);
+  letter-spacing: -0.03rem;
+  line-height: var(--heading-line-height);
+
+  @include breakpoint(md) {
+    font-size: var(--step-5);
+  }
+}
+
+.heading-title {
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: var(--step-3);
+  letter-spacing: -0.03rem;
+  line-height: var(--heading-line-height);
+}
+
+.heading-subtitle {
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: var(--step-2);
+  letter-spacing: -0.03rem;
+  line-height: var(--heading-line-height);
+}
+
+p {
+  font-size: var(--step--1);
+}
+
+.body-large {
+  font-size: var(--step-0);
+}
+
+.body-small {
+  font-size: var(--step--2);
+}

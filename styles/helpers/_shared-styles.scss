@@ -1,0 +1,121 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+
+// --------------------------------
+
+// Accessibility
+
+// --------------------------------
+
+.sr-only { // content made available only to screen readers
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+}
+
+.sr-only-focusable { // focusable, visually hidden element
+  &:not(:focus):not(:focus-within){
+    @extend .sr-only;
+  }
+}
+
+// --------------------------------
+
+// Aspect Ratio
+
+// --------------------------------
+
+[class^="aspect-ratio"], [class*=" aspect-ratio"] {
+  --aspect-ratio: calc(16/9);
+  position: relative;
+  height: 0;
+  padding-bottom: calc(100%/(var(--aspect-ratio)));
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &:not(iframe) {
+      object-fit: cover;
+    }
+  }
+}
+
+.aspect-ratio-16\:9 { --aspect-ratio: calc(16/9); }
+.aspect-ratio-3\:2  { --aspect-ratio: calc(3/2); }
+.aspect-ratio-4\:3  { --aspect-ratio: calc(4/3); }
+.aspect-ratio-5\:4  { --aspect-ratio: calc(5/4); }
+.aspect-ratio-1\:1  { --aspect-ratio: calc(1/1); }
+.aspect-ratio-4\:5  { --aspect-ratio: calc(4/5); }
+.aspect-ratio-3\:4  { --aspect-ratio: calc(3/4); }
+.aspect-ratio-2\:3  { --aspect-ratio: calc(2/3); }
+.aspect-ratio-9\:16 { --aspect-ratio: calc(9/16); }
+
+// --------------------------------
+
+// Typography
+
+// --------------------------------
+
+.text-truncate { // truncate text if it exceeds its parent
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.break-word {
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+// --------------------------------
+
+// Visibility
+
+// --------------------------------
+
+:root {
+  --display: block;
+}
+
+.is-visible {
+  display: var(--display) !important;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+html:not(.js) {
+  .no-js\:is-hidden {
+    display: none !important;
+  }
+}
+
+@media print {
+  .print\:is-hidden {
+    display: none !important;
+  }
+}
+
+// --------------------------------
+
+// Z-index
+
+// --------------------------------
+
+:root {
+  --z-index-header: 3; // e.g., main header
+  --z-index-popover: 5; // e.g., tooltips and dropdown
+  --z-index-fixed-element: 10; // e.g., 'back to top' button
+  --z-index-overlay: 15; // e.g., modals and dialogs
+}

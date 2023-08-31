@@ -1,0 +1,112 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+
+// --------------------------------
+
+// Explorations section styles
+
+// --------------------------------
+
+.explorations {
+  margin-top: var(--space-3xl);
+
+  &__header {
+    @include display-grid();
+    padding-top: var(--space-2xl);
+    position: relative;
+
+    &__title {
+      grid-column: 2 / span 22;
+      grid-row: 1 / 2;
+      margin-bottom: var(--space-xs);
+      text-align: center;
+
+      @include breakpoint(md) {
+        grid-column: 7 / span 12;
+      }
+    }
+
+    &__description {
+      grid-column: 2 / span 22;
+      grid-row: 2 / 3;
+      margin-bottom: var(--space-3xl);
+      text-align: center;
+
+      @include breakpoint(md) {
+        grid-column: 7 / span 12;
+      }
+    }
+  }
+
+  &__grid {
+    @include display-grid();
+
+    .exploration_grid_item {
+      @include display-flex();
+      align-items: flex-start;
+      aspect-ratio: 16 / 8;
+      background-color: var(--color-contrast-high);
+      background: radial-gradient(
+          92.63% 250.64% at 106.34% 108.98%,
+          rgba(15, 240, 227, 0.5) 0%,
+          rgba(62, 34, 170, 0.5) 33.2%,
+          rgba(28, 28, 28, 0.5) 83.94%
+        )
+        /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+      border: 1px solid var(--color-contrast-high);
+      border-radius: var(--radius-m);
+      flex-direction: column;
+      gap: var(--space-l);
+      grid-column: 2 / span 22;
+      padding: var(--space-s);
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+
+      @include breakpoint(md) {
+        align-items: center;
+        flex-direction: row;
+        gap: var(--space-xl);
+        grid-column: 4 / span 18;
+        justify-content: space-between;
+        padding: var(--space-l);
+      }
+
+      &:hover {
+        @include breakpoint(md) {
+          border: 1px solid var(--color-contrast-medium);
+
+          .button {
+            background-color: rgba(7, 7, 7, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+          }
+        }
+      }
+
+      &__content {
+        width: 100%;
+
+        @include breakpoint(md) {
+          width: 40%;
+        }
+
+        p {
+          color: var(--color-contrast-low);
+          font-weight: 300;
+          margin: var(--space-s) 0 var(--space-l) 0;
+        }
+      }
+
+      &__image {
+        aspect-ratio: 3 / 2;
+        height: auto;
+        // transition: all 0.3s ease-in-out;
+        width: 100%;
+
+        @include breakpoint(md) {
+          width: 60%;
+        }
+      }
+    }
+  }
+}

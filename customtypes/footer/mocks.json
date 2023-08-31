@@ -1,0 +1,38 @@
+[
+  {
+    "title": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "heading2",
+          "content": {
+            "text": "Dozen"
+          }
+        }
+      ]
+    },
+    "description": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "paragraph",
+          "content": {
+            "text": "Aliquip ut magna excepteur aliqua do cillum in consequat mollit pariatur consectetur ex."
+          }
+        }
+      ]
+    },
+    "link": {
+      "__TYPE__": "LinkContent",
+      "value": {
+        "__TYPE__": "ExternalLink",
+        "url": "https://prismic.io"
+      }
+    },
+    "link_label": {
+      "__TYPE__": "FieldContent",
+      "value": "chapter",
+      "type": "Text"
+    }
+  }
+]

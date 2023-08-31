@@ -1,0 +1,34 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+
+// --------------------------------
+
+// Global styles
+
+// --------------------------------
+
+html {
+  background-color: var(--color-contrast-higher);
+  scroll-behavior: auto !important;
+}
+
+body {
+  @include fontSmooth();
+  background-color: var(--color-contrast-higher);
+  color: var(--color-contrast-low);
+  font-size: var(--step-0);
+  font-smooth: antialiased;
+  font-weight: 400;
+  line-height: var(--body-line-height);
+  padding: 0;
+  margin: 0;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+
+  a {
+    color: var(--color-white);
+    font-weight: 700;
+  }
+}

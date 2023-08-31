@@ -1,0 +1,64 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+
+// --------------------------------
+
+// Header styles
+
+// --------------------------------
+
+.header {
+  @include display-grid();
+  color: var(--color-white);
+  left: 0;
+  opacity: 0;
+  padding-top: var(--space-m);
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  transform: translateY(-5%);
+  transition: opacity 0.3s ease-in-out, transform 0.8s ease-in-out;
+  user-select: none;
+  width: 100%;
+  z-index: 10;
+
+  @include breakpoint(md) {
+    padding-top: var(--space-l);
+  }
+
+  &__onScroll {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+    user-select: auto;
+  }
+
+  &__inner-wrapper {
+    @include display-flex();
+    align-items: center;
+    grid-column: 2 / span 22;
+    justify-content: space-between;
+    z-index: 2;
+  }
+
+  &__logo {
+    @include display-flex();
+    width: 12rem;
+    z-index: 2;
+  }
+
+  &__background {
+    background: linear-gradient(
+      180deg,
+      #070707 0%,
+      rgba(125, 125, 125, 0) 94.27%
+    );
+    height: 130%;
+    left: 0;
+    mix-blend-mode: soft-light;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+}

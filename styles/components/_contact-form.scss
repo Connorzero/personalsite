@@ -1,0 +1,30 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+
+// --------------------------------
+
+// Contact form styles
+
+// --------------------------------
+
+.contact-form {
+  &__footer {
+    @include display-flex();
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .error-message {
+    color: var(--color-error);
+    font-size: var(--step--2);
+    font-weight: 700;
+    margin-bottom: var(--space-s);
+  }
+
+  .success-message {
+    color: var(--color-success);
+    font-size: var(--step--2);
+    font-weight: 700;
+    margin: var(--space-s) 0;
+  }
+}

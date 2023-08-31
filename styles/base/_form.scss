@@ -1,0 +1,101 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+
+// --------------------------------
+
+// Form
+
+// --------------------------------
+
+.form-control {
+  border-radius: var(--radius-m);
+  font-size: var(--step--1);
+  padding: var(--space-xs) var(--space-xs);
+}
+
+.form-legend {
+  color: var(--color-contrast-higher, hsl(204, 28%, 7%));
+  font-size: var(--step-0);
+  line-height: 1.2;
+  margin-bottom: var(--space-m);
+}
+
+.form-label {
+  display: inline-block;
+  font-size: var(--step--1);
+  font-weight: 700;
+}
+
+.form-control {
+  background: var(--color-contrast-higher);
+  box-shadow: inset 0px 0px 0px 1px var(--color-contrast-medium);
+  line-height: 1.2;
+  margin-bottom: var(--space-xs);
+  transition: all 0.2s ease;
+  width: 100%;
+
+  &::placeholder {
+    color: var(--color-contrast-medium);
+    opacity: 1;
+  }
+
+  &:focus,
+  &:focus-within {
+    background: var(--color-contrast-high);
+    box-shadow: inset 0px 0px 0px 1px var(--color-contrast-low);
+    outline: none;
+
+    &::placeholder {
+      color: var(--color-contrast-low);
+      opacity: 1;
+    }
+  }
+}
+
+.form-control--disabled,
+.form-control[disabled],
+.form-control[readonly] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.form-control[aria-invalid='true'],
+.form-control.form-control--error {
+  box-shadow: inset 0px 0px 0px 1px alpha(var(--color-contrast-lower), 0),
+    0px 0px 0px 2px var(--color-error);
+
+  &:focus,
+  &:focus-within {
+    box-shadow: inset 0px 0px 0px 1px alpha(var(--color-contrast-lower), 0),
+      0px 0px 0px 2px var(--color-error), var(--shadow-sm);
+  }
+}
+
+.form-legend {
+}
+
+.form-label {
+  margin-bottom: var(--space-3xs);
+}
+
+.form {
+  padding: var(--space-2xl) 0;
+}
+
+.form-control_wrapper {
+  margin-bottom: var(--space-m);
+}
+
+.form_helper-text {
+  color: var(--color-contrast-medium);
+}
+
+.disclaimer {
+  color: var(--color-contrast-low);
+  margin-bottom: var(--space-s);
+}
+
+.grecaptcha-badge {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}

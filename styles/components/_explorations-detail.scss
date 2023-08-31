@@ -1,0 +1,126 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+
+// --------------------------------
+
+// Explorations detail styles
+
+// --------------------------------
+
+.exploration-detail-page {
+  .header {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+    user-select: auto;
+
+    &__background {
+      opacity: 0;
+    }
+  }
+}
+
+.hero_exploration {
+  @include display-grid();
+  align-content: start;
+  background-color: var(--color-black);
+  background: radial-gradient(
+      85.28% 90.96% at 50% -7.46%,
+      rgba(15, 240, 227, 0.5) 3.22%,
+      rgba(62, 34, 170, 0.5) 33.33%,
+      rgba(7, 7, 7, 0.5) 76.56%
+    ),
+    #070707;
+  color: var(--color-white);
+  overflow: hidden;
+  margin-bottom: var(--space-2xl);
+  padding-top: calc(var(--space-3xl) * 1.5);
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  &__client {
+    color: var(--color-white);
+    grid-column: 5 / span 16;
+    grid-row: 1 / 2;
+    margin-bottom: var(--space-2xs);
+    z-index: 1;
+
+    @include breakpoint(md) {
+      grid-column: 9 / span 8;
+    }
+  }
+
+  &__title {
+    grid-column: 2 / span 22;
+    grid-row: 2 / 3;
+    margin-bottom: var(--space-xl);
+    z-index: 1;
+
+    @include breakpoint(md) {
+      grid-column: 7 / span 12;
+    }
+  }
+
+  .featured_image {
+    aspect-ratio: attr(width) / attr(height);
+    border-radius: var(--radius-m);
+    grid-column: 2 / span 22;
+    grid-row: 3 / 4;
+    height: auto;
+    margin-bottom: var(--space-xl);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+
+    @include breakpoint(md) {
+      grid-column: 4 / span 18;
+    }
+  }
+
+  &__description {
+    color: var(--color-white);
+    grid-column: 2 / span 22;
+    grid-row: 4 / 5;
+    margin-bottom: var(--space-s);
+    z-index: 1;
+
+    @include breakpoint(md) {
+      grid-column: 7 / span 12;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+  }
+
+  &__services {
+    @include display-flex();
+    grid-column: 2 / span 22;
+    grid-row: 5 / 6;
+    justify-content: center;
+
+    @include breakpoint(md) {
+      grid-column: 7 / span 12;
+    }
+
+    .tag {
+      background-color: var(--color-contrast-high);
+      border: 1px solid alpha(var(--color-contrast-low), 0.3);
+      border-radius: var(--radius-l);
+      font-size: var(--step--2);
+      font-weight: 600;
+      padding: var(--space-3xs) var(--space-xs);
+    }
+  }
+}
+
+.exploration_detail_footer {
+  @include display-flex();
+  justify-content: center;
+  padding-top: var(--space-m);
+
+  @include breakpoint(sm) {
+    padding-top: var(--space-xl);
+  }
+}

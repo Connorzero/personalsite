@@ -1,0 +1,110 @@
+@use '../helpers/mixins' as *;
+
+// --------------------------------
+
+// Colors
+
+// --------------------------------
+
+:root {
+  // main
+  @include defineColorHSL(--color-primary-darker, 250, 84%, 38%);
+  @include defineColorHSL(--color-primary-dark, 250, 84%, 46%);
+  @include defineColorHSL(--color-primary, 250, 84%, 54%);
+  @include defineColorHSL(--color-primary-light, 250, 84%, 60%);
+  @include defineColorHSL(--color-primary-lighter, 250, 84%, 67%);
+
+  @include defineColorHSL(--color-accent-darker, 342, 89%, 38%);
+  @include defineColorHSL(--color-accent-dark, 342, 89%, 43%);
+  @include defineColorHSL(--color-accent, 342, 89%, 48%);
+  @include defineColorHSL(--color-accent-light, 342, 89%, 56%);
+  @include defineColorHSL(--color-accent-lighter, 342, 89%, 62%);
+
+  @include defineColorHSL(--color-black, 240, 0%, 3%);
+  @include defineColorHSL(--color-white, 0, 0%, 100%);
+
+  // feedback
+  @include defineColorHSL(--color-warning-darker, 35, 79%, 48%);
+  @include defineColorHSL(--color-warning-dark, 35, 79%, 56%);
+  @include defineColorHSL(--color-warning, 35, 79%, 66%);
+  @include defineColorHSL(--color-warning-light, 35, 79%, 74%);
+  @include defineColorHSL(--color-warning-lighter, 35, 79%, 82%);
+
+  @include defineColorHSL(--color-success-darker, 170, 78%, 26%);
+  @include defineColorHSL(--color-success-dark, 170, 78%, 31%);
+  @include defineColorHSL(--color-success, 170, 78%, 36%);
+  @include defineColorHSL(--color-success-light, 170, 78%, 42%);
+  @include defineColorHSL(--color-success-lighter, 170, 78%, 47%);
+
+  @include defineColorHSL(--color-error-darker, 342, 89%, 38%);
+  @include defineColorHSL(--color-error-dark, 342, 89%, 43%);
+  @include defineColorHSL(--color-error, 342, 89%, 48%);
+  @include defineColorHSL(--color-error-light, 342, 89%, 56%);
+  @include defineColorHSL(--color-error-lighter, 342, 89%, 62%);
+
+  // background
+  @include defineColorHSL(--color-bg-darker, 240, 4%, 90%);
+  @include defineColorHSL(--color-bg-dark, 240, 4%, 95%);
+  @include defineColorHSL(--color-bg, 0, 0%, 100%);
+  @include defineColorHSL(--color-bg-light, 0, 0%, 100%);
+  @include defineColorHSL(--color-bg-lighter, 0, 0%, 100%);
+
+  // color contrasts
+  @include defineColorHSL(--color-contrast-lower, 240, 4%, 85%);
+  @include defineColorHSL(--color-contrast-low, 0, 0%, 73%);
+  @include defineColorHSL(--color-contrast-medium, 0, 0%, 22%);
+  @include defineColorHSL(--color-contrast-high, 0, 0%, 11%);
+  @include defineColorHSL(--color-contrast-higher, 0, 0%, 3%);
+}
+
+// --------------------------------
+
+// Border radius
+
+// --------------------------------
+
+:root {
+  --radius-s: calc(var(--radius, 0.375em) / 2);
+  --radius-m: var(--radius, 0.375em);
+  --radius-l: calc(var(--radius, 0.375em) * 4);
+}
+
+// --------------------------------
+
+// Shadow and inner glow
+
+// --------------------------------
+
+:root {
+  --shadow-xs: 0 0.1px 0.3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
+  --shadow-sm: 0 0.3px 0.4px rgba(0, 0, 0, 0.025),
+    0 0.9px 1.5px rgba(0, 0, 0, 0.05), 0 3.5px 6px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 0.9px 1.5px rgba(0, 0, 0, 0.03),
+    0 3.1px 5.5px rgba(0, 0, 0, 0.08), 0 14px 25px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 1.2px 1.9px -1px rgba(0, 0, 0, 0.014),
+    0 3.3px 5.3px -1px rgba(0, 0, 0, 0.038),
+    0 8.5px 12.7px -1px rgba(0, 0, 0, 0.085),
+    0 30px 42px -1px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 1.5px 2.1px -6px rgba(0, 0, 0, 0.012),
+    0 3.6px 5.2px -6px rgba(0, 0, 0, 0.035),
+    0 7.3px 10.6px -6px rgba(0, 0, 0, 0.07),
+    0 16.2px 21.9px -6px rgba(0, 0, 0, 0.117),
+    0 46px 60px -6px rgba(0, 0, 0, 0.2);
+
+  --inner-glow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.075);
+  --inner-glow-top: inset 0 1px 0.5px hsla(0, 0%, 100%, 0.075);
+}
+
+// --------------------------------
+
+// Timing functions
+
+// --------------------------------
+
+:root {
+  // credits: https://github.com/ai/easings.net
+  --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+}

@@ -1,0 +1,47 @@
+{
+  "id": "text_grid",
+  "type": "SharedSlice",
+  "name": "TextGrid",
+  "description": "TextGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "Text grid title",
+            "allowTargetBlank": false,
+            "multi": "heading2"
+          }
+        }
+      },
+      "items": {
+        "text_section_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text Section Title",
+            "placeholder": "Text section title",
+            "allowTargetBlank": false,
+            "multi": "heading3"
+          }
+        },
+        "text_section_content": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text Section Content",
+            "placeholder": "Text section content",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item"
+          }
+        }
+      }
+    }
+  ]
+}

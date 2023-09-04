@@ -1,0 +1,4 @@
+const iframe = document.createElement("iframe");
+iframe.style.display = "none";
+iframe.src = /*<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FxqR7C6OtrAmkru4YfGloTZ%2FiO-Energy-Prototype%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D1-2244%26viewport%3D1091%252C577%252C0.23%26t%3DDHr8OZ5cCs8uqvk5-1%26scaling%3Dmin-zoom%26starting-point-node-id%3D1%253A2244%26show-proto-sidebar%3D1%26mode%3Ddesign" allowfullscreen></iframe>*/;
+document.body.appendChild(iframe);
